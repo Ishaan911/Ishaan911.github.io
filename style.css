@@ -57,16 +57,10 @@ button {
   transition: 0.3s;
 }
 
-button:hover {
-  transform: scale(1.05);
-  background: #ff2f65;
-}
+button:hover { transform: scale(1.05); background: #ff2f65; }
 
-.hidden {
-  display: none;
-}
+.hidden { display: none; }
 
-/* Fancy Apology Reveal */
 .apology-container {
   background: #ffffff;
   border-left: 5px solid #ff4f7a;
@@ -79,41 +73,23 @@ button:hover {
   transition: all 1.5s ease-out;
 }
 
-.apology-container.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.apology-container.show { opacity: 1; transform: translateY(0); }
 
-.fancy-message {
-  font-style: italic;
-  font-size: 1.1rem;
-  color: #d63384;
-  line-height: 1.6;
-}
+.fancy-message { font-style: italic; font-size: 1.1rem; color: #d63384; line-height: 1.6; }
 
-.image-gallery {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
+.interactive-section { margin: 20px 0; padding-top: 15px; border-top: 1px dashed #ffb6c1; }
 
-.memory-img {
-  width: 130px;
-  height: 130px;
-  object-fit: cover;
-  border-radius: 12px;
-  border: 3px solid #fff0f5;
-}
+.secondary-btn { background: white; color: #ff4f7a; border: 2px solid #ff4f7a; padding: 8px 15px; font-size: 0.8rem; margin-bottom: 10px; }
 
-/* Heart Rain Effect */
-.heart-particle {
-  position: fixed;
-  top: -5vh;
-  pointer-events: none;
-  animation: heartRain 4s linear forwards;
-  z-index: 1000;
-}
+.reason-text { font-weight: bold; color: #ff4f7a; font-size: 0.95rem; min-height: 1.5em; }
+
+.image-gallery { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+
+.memory-img { width: 130px; height: 130px; object-fit: cover; border-radius: 12px; border: 3px solid #fff0f5; }
+
+.music-toggle { position: fixed; bottom: 20px; right: 20px; font-size: 0.7rem; padding: 10px; background: rgba(255, 255, 255, 0.8); border: 1px solid #ffb6c1; }
+
+.heart-particle { position: fixed; top: -5vh; pointer-events: none; animation: heartRain 4s linear forwards; z-index: 1000; }
 
 @keyframes heartRain {
   0% { transform: translateY(0) rotate(0deg); opacity: 1; }
