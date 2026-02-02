@@ -1,7 +1,6 @@
-const text = "I made this little corner of the internet just for you 🌷";
+const text = "Every moment with you is a treasure... 🌷";
 let index = 0;
 
-// Typing animation
 function typeEffect() {
   if (index < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(index);
@@ -11,69 +10,62 @@ function typeEffect() {
 }
 window.onload = typeEffect;
 
-// Logic to play music automatically on first interaction
-window.addEventListener('click', () => {
-  const music = document.getElementById("bg-music");
-  if (music.paused) {
-    music.play().catch(e => console.log("Audio play blocked until interaction"));
-    document.querySelector(".music-toggle").innerText = "⏸ Music: On";
-  }
-}, { once: true });
-
-const reasons = [
-  "Your smile brightens my darkest days. ☀️",
-  "The way you handle everything with grace. ✨",
-  "Because you're my best friend and my love. ❤️",
-  "The way you listen to my nonsense. 😂",
-  "You make me want to be a better person.",
-  "Your kindness towards others is inspiring. 🌸",
-  "How you look so cute when you're laughing. 🥰"
-];
-
-function generateReason() {
-  const display = document.getElementById("reason-display");
-  const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
-  display.innerText = randomReason;
+function revealMenu() {
+  document.getElementById('mainButton').style.display = 'none';
+  document.getElementById('menu-area').classList.remove('hidden');
 }
 
-function revealAll() {
-  // Ensure music is playing
-  const music = document.getElementById("bg-music");
-  music.play();
-  document.querySelector(".music-toggle").innerText = "⏸ Music: On";
-
-  // Show content
-  document.getElementById("surprise-area").style.display = "block";
+function showSection(type) {
+  const display = document.getElementById('dynamic-content');
+  const view = document.getElementById('content-display');
+  const menu = document.querySelector('.split-menu');
   
-  // Trigger apology animation
-  setTimeout(() => { 
-    document.getElementById("apology-card").classList.add("show"); 
-  }, 150);
+  menu.style.display = 'none';
+  view.style.display = 'block';
+  display.innerHTML = ''; // Clear previous content
 
-  // Heart rain effect
-  for (let i = 0; i < 25; i++) { 
-    setTimeout(createRainHeart, i * 150); 
+  if (type === 'photos') {
+    let html = '<div class="photo-grid">';
+    // Example: looping through 12 photos named 1.jpg to 12.jpg in 'photos/' folder
+    for(let i=1; i<=12; i++) {
+      html += `<img src="photos/${i}.jpg" alt="Memory">`;
+    }
+    html += '</div>';
+    display.innerHTML = html;
+  } 
+
+  else if (type === 'audio') {
+    const songs = ['Our First Call', 'Your Favorite Song', 'Voice Note'];
+    const files = ['audio1.mp3', 'audio2.mp3', 'audio3.mp3']; // actual filenames in audio/
+    songs.forEach((song, i) => {
+      display.innerHTML += `
+        <div class="audio-item">
+          <span>${song}</span>
+          <audio controls><source src="audio/${files[i]}" type="audio/mpeg"></audio>
+        </div>`;
+    });
+  }
+
+  else if (type === 'letters') {
+    // PDF link and Text file demo
+    display.innerHTML = `
+      <div class="item-list">
+        <div class="file-item"><a href="letters/letter1.pdf" target="_blank">📜 Anniversary Letter (PDF)</a></div>
+        <div class="file-item" style="cursor:pointer" onclick="readTxt('letters/note.txt')">📝 Open Secret Note (.txt)</div>
+        <div id="text-reader" style="margin-top:10px; font-style:italic; color:#555"></div>
+      </div>`;
   }
 }
 
-function createRainHeart() {
-  const heart = document.createElement("div");
-  heart.innerHTML = "❤️";
-  heart.className = "heart-particle";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => { heart.remove(); }, 4000);
+function readTxt(filePath) {
+  fetch(filePath)
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('text-reader').innerText = data;
+    });
 }
 
-function toggleMusic() {
-  const music = document.getElementById("bg-music");
-  const btn = document.querySelector(".music-toggle");
-  if (music.paused) { 
-    music.play(); 
-    btn.innerText = "⏸ Music: On"; 
-  } else { 
-    music.pause(); 
-    btn.innerText = "🎵 Music: Off"; 
-  }
+function hideContent() {
+  document.getElementById('content-display').style.display = 'none';
+  document.querySelector('.split-menu').style.display = 'flex';
 }
