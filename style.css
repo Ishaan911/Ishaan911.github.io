@@ -1,28 +1,18 @@
-/* Styling for the image gallery */
-.image-gallery {
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ffd1dc); /* Soft pink background */
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
 }
 
-.memory-img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 10px;
-  border: 3px solid #ffb6c1;
-  transition: transform 0.3s;
-}
-
-.memory-img:hover {
-  transform: scale(1.1) rotate(3deg);
-}
-
-.secret-text {
-  font-weight: bold;
-  color: #ff4f7a;
-  margin-top: 15px;
-  line-height: 1.5;
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
