@@ -9,44 +9,36 @@ function typeEffect() {
   }
 }
 
-// Start typing when page loads
 window.onload = typeEffect;
 
-const messages = [
-  "The secret is that I love you, more than you! hehe.",
-  "You're my favorite person to annoy and love. ❤️",
-  "I promise to always be your biggest supporter.",
-  "You're the best thing that's happened to me. ✨",
-  "Sending you a million virtual hugs right now!"
-];
-
 function revealAll() {
-  // Show the hidden area
+  // 1. Show the hidden section
   const surpriseArea = document.getElementById("surprise-area");
   surpriseArea.style.display = "block";
 
-  // Pick a random message
-  const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-  document.getElementById("secret-message").innerText = randomMsg;
+  // 2. Animate the apology card
+  const apologyCard = document.getElementById("apology-card");
+  setTimeout(() => {
+    apologyCard.classList.add("show");
+  }, 100);
 
-  // Create a floating heart
-  createHeart();
+  // 3. Create a rain of hearts
+  for (let i = 0; i < 20; i++) {
+    setTimeout(createRainHeart, i * 150);
+  }
 }
 
-function createHeart() {
+function createRainHeart() {
   const heart = document.createElement("div");
   heart.innerHTML = "❤️";
-  heart.style.position = "fixed";
+  heart.className = "heart-particle";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.bottom = "-5vh";
-  heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-  heart.style.animation = "floatUp 3s ease-in forwards";
-  heart.style.zIndex = "1000";
+  heart.style.fontSize = (Math.random() * 20 + 10) + "px";
   
   document.body.appendChild(heart);
 
-  // Clean up the heart after it floats away
+  // Clean up heart after animation
   setTimeout(() => {
     heart.remove();
-  }, 3000);
+  }, 4000);
 }
