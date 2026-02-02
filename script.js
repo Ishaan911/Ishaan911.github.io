@@ -1,7 +1,7 @@
 const text = "I made this little corner of the internet just for you 🌷";
 let index = 0;
 
-// 1. Typing Effect (Runs immediately)
+// Typing animation
 function typeEffect() {
   if (index < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(index);
@@ -11,92 +11,69 @@ function typeEffect() {
 }
 window.onload = typeEffect;
 
-// 2. Reveal the Menu (Hides the main button, shows options)
-function revealMenu() {
-  document.getElementById('mainButton').style.display = 'none';
-  document.getElementById('menu-area').style.display = 'block';
+// Logic to play music automatically on first interaction
+window.addEventListener('click', () => {
+  const music = document.getElementById("bg-music");
+  if (music.paused) {
+    music.play().catch(e => console.log("Audio play blocked until interaction"));
+    document.querySelector(".music-toggle").innerText = "⏸ Music: On";
+  }
+}, { once: true });
+
+const reasons = [
+  "Your smile brightens my darkest days. ☀️",
+  "The way you handle everything with grace. ✨",
+  "Because you're my best friend and my love. ❤️",
+  "The way you listen to my nonsense. 😂",
+  "You make me want to be a better person.",
+  "Your kindness towards others is inspiring. 🌸",
+  "How you look so cute when you're laughing. 🥰"
+];
+
+function generateReason() {
+  const display = document.getElementById("reason-display");
+  const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+  display.innerText = randomReason;
 }
 
-// 3. Show Specific Section content
-function showSection(type) {
-  const display = document.getElementById('dynamic-content');
-  const view = document.getElementById('content-display');
-  const menu = document.querySelector('.split-menu');
+function revealAll() {
+  // Ensure music is playing
+  const music = document.getElementById("bg-music");
+  music.play();
+  document.querySelector(".music-toggle").innerText = "⏸ Music: On";
+
+  // Show content
+  document.getElementById("surprise-area").style.display = "block";
   
-  // Hide menu, show content area
-  menu.style.display = 'none';
-  view.style.display = 'block';
-  display.innerHTML = ''; // Clear old content
+  // Trigger apology animation
+  setTimeout(() => { 
+    document.getElementById("apology-card").classList.add("show"); 
+  }, 150);
 
-  // --- LOGIC FOR PHOTOS ---
-  if (type === 'photos') {
-    let html = '<div class="photo-grid">';
-    // NOTE: Make sure your photos are named 1.jpg, 2.jpg... up to 15.jpg in "photos" folder
-    for(let i=1; i<=12; i++) {
-      html += `<img src="photos/${i}.jpg" alt="Memory" onerror="this.style.display='none'">`;
-    }
-    html += '</div>';
-    display.innerHTML = html;
-  } 
-
-  // --- LOGIC FOR AUDIO ---
-  else if (type === 'audio') {
-    // List your audio filenames here exactly as they are in the folder
-    const audioFiles = ['voice-note.mp3', 'song-for-you.mp3', 'laughing.mp3']; 
-    
-    audioFiles.forEach(file => {
-      // This removes the ".mp3" extension for the display title
-      const cleanName = file.replace('.mp3', '').replace(/-/g, ' '); 
-      
-      display.innerHTML += `
-        <div class="audio-item">
-          <span class="audio-name">🎵 ${cleanName}</span>
-          <audio controls>
-            <source src="audio/${file}" type="audio/mpeg">
-            Your browser does not support audio.
-          </audio>
-        </div>`;
-    });
-  }
-
-  // --- LOGIC FOR LETTERS/PDFs ---
-  else if (type === 'letters') {
-    display.innerHTML = `
-      <div style="display:flex; flex-direction:column; gap:10px;">
-        <a href="letters/love-letter.pdf" target="_blank" class="menu-btn" style="text-align:center; text-decoration:none;">
-           📜 Open PDF Letter
-        </a>
-        <button class="menu-btn" onclick="readTxt('letters/note.txt')">
-           📝 Read Secret Note
-        </button>
-        <div id="text-reader" style="background:#f9f9f9; padding:10px; border-radius:5px; margin-top:10px; font-size:0.9rem;"></div>
-      </div>`;
-  }
-
-  // --- LOGIC FOR SURPRISE MESSAGES ---
-  else if (type === 'surprise') {
-    // You can upload a text file named "surprise.txt" in "letters" folder
-    readTxt('letters/surprise.txt');
-    display.innerHTML += `<div id="text-reader" style="white-space: pre-wrap; text-align:left; color:#555;">Loading message...</div>`;
+  // Heart rain effect
+  for (let i = 0; i < 25; i++) { 
+    setTimeout(createRainHeart, i * 150); 
   }
 }
 
-// Helper to read text files
-function readTxt(filePath) {
-  fetch(filePath)
-    .then(response => response.text())
-    .then(data => {
-      const reader = document.getElementById('text-reader');
-      if(reader) reader.innerText = data;
-    })
-    .catch(err => {
-      const reader = document.getElementById('text-reader');
-      if(reader) reader.innerText = "Could not load the note. Check if the file exists!";
-    });
+function createRainHeart() {
+  const heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.className = "heart-particle";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 4000);
 }
 
-// 4. Back Button Logic
-function hideContent() {
-  document.getElementById('content-display').style.display = 'none';
-  document.querySelector('.split-menu').style.display = 'flex';
+function toggleMusic() {
+  const music = document.getElementById("bg-music");
+  const btn = document.querySelector(".music-toggle");
+  if (music.paused) { 
+    music.play(); 
+    btn.innerText = "⏸ Music: On"; 
+  } else { 
+    music.pause(); 
+    btn.innerText = "🎵 Music: Off"; 
+  }
 }
