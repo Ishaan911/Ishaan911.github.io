@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Razia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,21 +16,22 @@
     <div class="card">
       <h2>Why you’re special 🌸</h2>
       <p id="special-msg">
-        You are special because you are not a part of this crowd. I love you for that, and I always will.
+        You are special because you are not a part of this crowd. 
+        I love you for that, and I always will.
       </p>
     </div>
 
-    <button onclick="revealAll()">Click for a Surprise 👀</button>
+    <button id="mainButton" onclick="revealAll()">Click for a Surprise 👀</button>
 
     <div id="surprise-area" class="hidden">
       <p class="secret-text" id="secret-message"></p>
       
       <div class="image-gallery">
-        <img src="your-image-1.jpg" alt="Us" class="memory-img">
-        <img src="your-image-2.jpg" alt="Favorite" class="memory-img">
+        <img src="image_1d75e8.png" alt="Memory 1" class="memory-img">
+        <img src="your-second-image.jpg" alt="Memory 2" class="memory-img">
       </div>
       
-      <p style="margin-top: 15px; font-style: italic;">(Click the button again for a new message!)</p>
+      <p class="hint">(Click the button again for more!)</p>
     </div>
   </div>
 
