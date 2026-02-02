@@ -1,50 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Razia ✨</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="container">
-    <h1 class="title">Hello Razia ✨</h1>
+  <div class="container" id="main-container">
+    <h1 class="title">For Razia 🌷</h1>
     <p class="typing" id="typing"></p>
+    
+    <button id="mainButton" onclick="revealMenu()">Click for the Big Surprise 👀</button>
 
-    <div class="card">
-      <h2>Why you’re special 🌸</h2>
-      <p>
-        You are special because you are not a part of this crowd. 
-        I love you for that, and I always will.
-      </p>
-    </div>
-
-    <button id="mainButton" onclick="revealAll()">Click for a Surprise 👀</button>
-
-    <div id="surprise-area" class="hidden">
-      <div class="apology-container" id="apology-card">
-        <p class="fancy-message">
-          "I am sorry for everything i did to you till now razia. i will make sure it wont happen again, but if it happens, leave me. ily"
-        </p>
-      </div>
-      
-      <div class="interactive-section">
-        <button class="secondary-btn" onclick="generateReason()">Click for a reason I love you ❤️</button>
-        <p id="reason-display" class="reason-text"></p>
+    <div id="menu-area" class="hidden">
+      <div class="split-menu">
+        <button class="menu-btn slide-left" onclick="showSection('photos')">📸 Our Photos</button>
+        <button class="menu-btn slide-right" onclick="showSection('audio')">🎵 Our Audio</button>
+        <button class="menu-btn slide-left" onclick="showSection('letters')">✉️ Texts & Letters</button>
+        <button class="menu-btn slide-right" onclick="showSection('surprise')">🎁 Surprise Messages</button>
       </div>
 
-      <div class="image-gallery">
-        <img src="image_1d75e8.png" alt="Memory 1" class="memory-img">
-        <img src="photo2.jpg" alt="Memory 2" class="memory-img">
+      <div id="content-display" class="content-view">
+          <button class="back-btn" onclick="hideContent()">← Back to Menu</button>
+          <div id="dynamic-content"></div>
       </div>
     </div>
   </div>
-
-  <audio id="bg-music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
-  <button class="music-toggle" onclick="toggleMusic()">🎵 Music: Off</button>
 
   <script src="script.js"></script>
 </body>
