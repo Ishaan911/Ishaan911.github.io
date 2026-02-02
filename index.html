@@ -2,34 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>For Razia </title>
+  <title>For Razia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <div class="container">
-    <h1 class="title">Hello bkchod ladki</h1>
+    <h1 class="title">Hello Razia ✨</h1>
 
     <p class="typing" id="typing"></p>
 
     <div class="card">
       <h2>Why you’re special 🌸</h2>
-      <p>
-        hello razia. you are special because you are not a part of this crowd of competing jelous girls.
-        even if u do, i know u really dont want to be. I love you for that. i always will. 
+      <p id="special-msg">
+        You are special because you are not a part of this crowd. I love you for that, and I always will.
       </p>
     </div>
 
-    <button onclick="reveal()">Click me 👀</button>
+    <button onclick="revealAll()">Click for a Surprise 👀</button>
 
-    <p class="hidden" id="secret">
-      yup i lack some things a boyfriend(good one) have but /n
-      i promise you will have them in me, i do.
-      the secret is that i love you, more than you . hehehehehehhehehhehheh
-    </p>
+    <div id="surprise-area" class="hidden">
+      <p class="secret-text" id="secret-message"></p>
+      
+      <div class="image-gallery">
+        <img src="your-image-1.jpg" alt="Us" class="memory-img">
+        <img src="your-image-2.jpg" alt="Favorite" class="memory-img">
+      </div>
+      
+      <p style="margin-top: 15px; font-style: italic;">(Click the button again for a new message!)</p>
+    </div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
-
