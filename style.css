@@ -1,121 +1,70 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+/* Split Animation */
+.slide-left { animation: slideInLeft 0.8s ease forwards; }
+.slide-right { animation: slideInRight 0.8s ease forwards; }
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100vw); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
-body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
+@keyframes slideInRight {
+  from { transform: translateX(100vw); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Menu Grid */
+.split-menu {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  padding: 20px;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.container {
+.menu-btn {
   background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-}
-
-.title {
-  font-size: 2.2rem;
   color: #ff4f7a;
-  margin-bottom: 10px;
-}
-
-.typing {
-  font-size: 1.1rem;
-  color: #555;
-  min-height: 45px;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: #fff0f5;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ffdae0;
-}
-
-button {
-  background: #ff4f7a;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 1rem;
+  border: 2px solid #ff4f7a;
+  padding: 15px;
+  border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(255, 79, 122, 0.3);
 }
 
-button:hover { transform: scale(1.05); background: #ff2f65; }
+.menu-btn:hover { background: #fff0f5; transform: scale(1.02); }
+
+/* Photo Gallery Grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.photo-grid img {
+  width: 100%;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+/* Audio & File List Aesthetic */
+.item-list {
+  text-align: left;
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.audio-item, .file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
 
 .hidden { display: none; }
-
-/* Fancy Apology Reveal */
-.apology-container {
-  background: #ffffff;
-  border-left: 5px solid #ff4f7a;
-  padding: 20px;
-  margin: 25px 0;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(255, 79, 122, 0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1.2s ease-out;
-}
-
-.apology-container.show { opacity: 1; transform: translateY(0); }
-
-.fancy-message { font-style: italic; font-size: 1.1rem; color: #d63384; line-height: 1.6; }
-
-/* Interactive Section */
-.interactive-section { margin: 25px 0; padding-top: 15px; border-top: 1px dashed #ffb6c1; }
-
-.secondary-btn { background: white; color: #ff4f7a; border: 2px solid #ff4f7a; padding: 10px 18px; font-size: 0.85rem; margin-bottom: 12px; box-shadow: none; }
-
-.reason-text { font-weight: bold; color: #ff4f7a; font-size: 1rem; min-height: 1.5em; margin-bottom: 15px; }
-
-/* Gallery */
-.image-gallery { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-
-.memory-img { width: 140px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid #fff0f5; transition: 0.3s; }
-
-.memory-img:hover { transform: rotate(3deg) scale(1.05); }
-
-/* Floating UI */
-.music-toggle { position: fixed; bottom: 20px; right: 20px; font-size: 0.8rem; padding: 10px 15px; background: rgba(255, 255, 255, 0.9); border: 1px solid #ffb6c1; z-index: 1001; }
-
-.heart-particle { position: fixed; top: -5vh; pointer-events: none; animation: heartRain 4s linear forwards; z-index: 1000; }
-
-@keyframes heartRain {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-}
-/* Make the surprise button 'pulse' so she knows to click it */
-#mainButton {
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Make images tilt when hovered */
-.memory-img:hover {
-  transform: rotate(-5deg) scale(1.1);
-  cursor: pointer;
-}
+.content-view { margin-top: 20px; display: none; }
+.back-btn { font-size: 0.8rem; margin-bottom: 10px; background: #eee; color: #333; }
