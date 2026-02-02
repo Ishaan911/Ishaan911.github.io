@@ -8,24 +8,26 @@ function typeEffect() {
     setTimeout(typeEffect, 70);
   }
 }
-
 window.onload = typeEffect;
 
+const reasons = [
+  "Your smile brightens my darkest days. ☀️",
+  "The way you handle everything with grace. ✨",
+  "Because you're my best friend and my love. ❤️",
+  "The way you listen to my nonsense. 😂",
+  "You make me want to be a better person."
+];
+
+function generateReason() {
+  const display = document.getElementById("reason-display");
+  const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+  display.innerText = randomReason;
+}
+
 function revealAll() {
-  // 1. Show the hidden section
-  const surpriseArea = document.getElementById("surprise-area");
-  surpriseArea.style.display = "block";
-
-  // 2. Animate the apology card
-  const apologyCard = document.getElementById("apology-card");
-  setTimeout(() => {
-    apologyCard.classList.add("show");
-  }, 100);
-
-  // 3. Create a rain of hearts
-  for (let i = 0; i < 20; i++) {
-    setTimeout(createRainHeart, i * 150);
-  }
+  document.getElementById("surprise-area").style.display = "block";
+  setTimeout(() => { document.getElementById("apology-card").classList.add("show"); }, 100);
+  for (let i = 0; i < 20; i++) { setTimeout(createRainHeart, i * 150); }
 }
 
 function createRainHeart() {
@@ -34,11 +36,13 @@ function createRainHeart() {
   heart.className = "heart-particle";
   heart.style.left = Math.random() * 100 + "vw";
   heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-  
   document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 4000);
+}
 
-  // Clean up heart after animation
-  setTimeout(() => {
-    heart.remove();
-  }, 4000);
+function toggleMusic() {
+  const music = document.getElementById("bg-music");
+  const btn = document.querySelector(".music-toggle");
+  if (music.paused) { music.play(); btn.innerText = "⏸ Pause Music"; } 
+  else { music.pause(); btn.innerText = "🎵 Play Music"; }
 }
