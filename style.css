@@ -1,18 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-  height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffd1dc); /* Soft pink background */
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0;
+  overflow-x: hidden;
+  padding: 20px;
 }
 
 .container {
   background: white;
   padding: 30px;
   border-radius: 20px;
-  width: 90%;
+  width: 100%;
   max-width: 420px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.title {
+  font-size: 2rem;
+  color: #ff4f7a;
+  margin-bottom: 10px;
+}
+
+.typing {
+  font-size: 1rem;
+  color: #555;
+  min-height: 40px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #fff0f5;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  color: #ff4f7a;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+button {
+  background: #ff4f7a;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(255, 79, 122, 0.3);
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #ff2f65;
+}
+
+.hidden {
+  display: none;
+  margin-top: 25px;
+}
+
+.secret-text {
+  font-weight: 600;
+  color: #ff4f7a;
+  margin-bottom: 15px;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.memory-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 4px solid #fff0f5;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 15px;
+}
+
+/* Floating Heart Animation */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
 }
