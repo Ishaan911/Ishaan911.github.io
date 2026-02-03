@@ -59,7 +59,11 @@ button {
     background: #ff4d6d;
     color: white;
     box-shadow: 0 10px 20px rgba(255,77,109,0.4);
+    margin-bottom: 25px;
+    z-index: 10;
+    position: relative;
 }
+
 
 #yesBtn:hover {
     transform: scale(1.1);
