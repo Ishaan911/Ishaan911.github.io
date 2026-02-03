@@ -71,7 +71,7 @@ button {
     top: 300px;
     background: #fff;
     color: #333;
-    transition: left 0.25s ease, top 0.25s ease;
+    transition: left 0.15s ease, top 0.15s ease;
 }
 
 #message {
