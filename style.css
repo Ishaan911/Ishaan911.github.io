@@ -1,105 +1,77 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  padding: 20px;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .container {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    text-align: center;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 50px 60px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
-.title {
-  font-size: 2.2rem;
-  color: #ff4f7a;
-  margin-bottom: 10px;
+h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.typing {
-  font-size: 1.1rem;
-  color: #555;
-  min-height: 45px;
-  margin-bottom: 20px;
-}
-
-.card {
-  background: #fff0f5;
-  padding: 20px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ffdae0;
+.buttons {
+    position: relative;
+    height: 150px;
 }
 
 button {
-  background: #ff4f7a;
-  color: white;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(255, 79, 122, 0.3);
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-button:hover { transform: scale(1.05); background: #ff2f65; }
-
-.hidden { display: none; }
-
-/* Fancy Apology Reveal */
-.apology-container {
-  background: #ffffff;
-  border-left: 5px solid #ff4f7a;
-  padding: 20px;
-  margin: 25px 0;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(255, 79, 122, 0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1.2s ease-out;
+#yesBtn {
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 10px 20px rgba(255,77,109,0.4);
 }
 
-.apology-container.show { opacity: 1; transform: translateY(0); }
+#yesBtn:hover {
+    transform: scale(1.1);
+}
 
-.fancy-message { font-style: italic; font-size: 1.1rem; color: #d63384; line-height: 1.6; }
+#noBtn {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    color: #333;
+}
 
-/* Interactive Section */
-.interactive-section { margin: 25px 0; padding-top: 15px; border-top: 1px dashed #ffb6c1; }
+#message {
+    margin-top: 30px;
+    font-size: 1.8rem;
+    color: #fff;
+    display: none;
+    animation: pop 0.6s ease forwards;
+}
 
-.secondary-btn { background: white; color: #ff4f7a; border: 2px solid #ff4f7a; padding: 10px 18px; font-size: 0.85rem; margin-bottom: 12px; box-shadow: none; }
-
-.reason-text { font-weight: bold; color: #ff4f7a; font-size: 1rem; min-height: 1.5em; margin-bottom: 15px; }
-
-/* Gallery */
-.image-gallery { display: flex; justify-content: center; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
-
-.memory-img { width: 140px; height: 140px; object-fit: cover; border-radius: 12px; border: 4px solid #fff0f5; transition: 0.3s; }
-
-.memory-img:hover { transform: rotate(3deg) scale(1.05); }
-
-/* Floating UI */
-.music-toggle { position: fixed; bottom: 20px; right: 20px; font-size: 0.8rem; padding: 10px 15px; background: rgba(255, 255, 255, 0.9); border: 1px solid #ffb6c1; z-index: 1001; }
-
-.heart-particle { position: fixed; top: -5vh; pointer-events: none; animation: heartRain 4s linear forwards; z-index: 1000; }
-
-@keyframes heartRain {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+@keyframes pop {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
 }
