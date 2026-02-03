@@ -32,10 +32,19 @@ h1 {
 
 .buttons {
     position: relative;
-    width: 320px;
-    height: 200px;
+    width: 700px;
+    height: 500px;
     margin: 0 auto;
 }
+
+/* fallback for small screens */
+@media (max-width: 750px) {
+    .buttons {
+        width: 90vw;
+        height: 60vh;
+    }
+}
+
 
 button {
     padding: 15px 35px;
