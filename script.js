@@ -1,30 +1,31 @@
-const noBtn = document.getElementById("noBtn");
-const yesBtn = document.getElementById("yesBtn");
-const message = document.getElementById("message");
-const box = document.querySelector(".playground");
+document.addEventListener("DOMContentLoaded", () => {
 
-noBtn.addEventListener("mouseenter", () => {
-    const minJump = 120; // 👈 THIS is the distance knob (try 80–200)
+    // Fade in page
+    document.body.style.opacity = "1";
 
-    const boxW = box.clientWidth - noBtn.offsetWidth;
-    const boxH = box.clientHeight - noBtn.offsetHeight;
+    // Scroll memory
+    const scrollBox = document.querySelector(".scroll-box");
 
-    let newX, newY;
-    let dx, dy;
+    if (localStorage.getItem("scrollPosition")) {
+        scrollBox.scrollTop = localStorage.getItem("scrollPosition");
+    }
 
-    do {
-        newX = Math.random() * boxW;
-        newY = Math.random() * boxH;
+    scrollBox.addEventListener("scroll", () => {
+        localStorage.setItem("scrollPosition", scrollBox.scrollTop);
+    });
 
-        dx = newX - noBtn.offsetLeft;
-        dy = newY - noBtn.offsetTop;
-    } while (Math.hypot(dx, dy) < minJump); // ensure it's far enough
+    // Music toggle
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
 
-    noBtn.style.left = newX + "px";
-    noBtn.style.top = newY + "px";
-});
+    btn.addEventListener("click", () => {
+        if (music.paused) {
+            music.play();
+            btn.classList.add("playing");
+        } else {
+            music.pause();
+            btn.classList.remove("playing");
+        }
+    });
 
-
-yesBtn.addEventListener("click", () => {
-    message.style.display = "block";
 });
